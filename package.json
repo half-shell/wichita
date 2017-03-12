@@ -1,0 +1,19 @@
+{
+  "name": "wichita",
+  "version": "1.0.0",
+  "description": "nodejs sample api librarize.me",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/half-shell/wichita.git"
+  },
+  "author": "half-shell, hyde777",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/half-shell/wichita/issues"
+  },
+  "homepage": "https://github.com/half-shell/wichita#readme"
+}
