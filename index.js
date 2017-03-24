@@ -12,6 +12,11 @@ app.use('/user', routers.user)
 
 routes(routers)
 
+//Test route
+app.get('/ping', (req, res) => {
+    res.send('PONG\n')
+})
+
 app.listen(port, () => {
     console.log('wichita\'s listenin on port ' + port)
 })
