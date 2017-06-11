@@ -1,5 +1,6 @@
 'use strict'
 
 module.exports = function(routers){
-    require('./user')(routers.user)
+    require('./users')(routers.users);
+    require('./auth')(routers.auth);
 }
