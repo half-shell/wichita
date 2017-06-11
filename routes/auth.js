@@ -3,32 +3,19 @@ const models = require('../models');
 let User = models.User;
 //payload sous la forme login / password
 module.exports = function(authRouter) {
-    authRouter.post('/', passport.authenticate('local', { successRedirect: '/',
-        failureRedirect: '/',
-        failureFlash: true }));
+
+    authRouter.post('/', (req, res, err) => {
+      User.findOne({where: { email: req.body.username }}).then((user) => {
+        console.log(user);
+          if (!user) {
+              res.send("bad username")
+          }
+          if (user.password == req.body.password) {
+              res.send("Authentification successfull")
+          }
+          else {
+              res.send("Authentification not successfull")
+          }
+      });
+    });
 }
-
-function ExecAuth(log, passwd)
-{
-    //do Auth Operation here
-    console.log(log + ' ' + passwd)
-    return "is allRight";
-}
-
-let passport = require('passport')
-    , LocalStrategy = require('passport-local').Strategy;
-
-passport.use(new LocalStrategy(
-    function(username, password, done) {
-        User.findOne({ username: username }, function(err, user) {
-            if (err) { return done(err); }
-            if (!user) {
-                return done(null, false, { message: 'Incorrect username.' });
-            }
-            if (!user.validPassword(password)) {
-                return done(null, false, { message: 'Incorrect password.' });
-            }
-            return done(null, user);
-        });
-    }
-));

@@ -16,9 +16,9 @@ const routers = {
 app.use(bodyparser.json())
 
 app.use('/users', routers.users)
-app.use('/auth',routers.auth)
+app.use('/auth', routers.auth)
 
-models.sequelize.sync({ force: true })
+//models.sequelize.sync({ force: true })
 
 routes(routers)
 
